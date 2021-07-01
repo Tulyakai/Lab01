@@ -29,15 +29,15 @@
                         <li v-for='d in details'>{{ d }}</li>
                     </ul>
                     <h2>Colors:</h2>
-                    <div v-for='variant in variants' :key='variant.id' @mouseover='updateImage(variant.image)'>{{ variant.color}}</div>
+                    <div v-for='variant in variants' :key='variant.id' @mouseover='updateImage(variant.image)' :style="{color:variant.color}" >{{ variant.color}}</div>
 
                     <h2>size:</h2>
                     <label v-for='size in sizes' >{{ size }} <b>|</b> </label></br>
-                    <button class='button' @click='addToCart' v-if='cart < inventory'>Add to Cart</button>
-                    <button class='button' @click='takeAll' v-if='cart < inventory'>Take all</button>
+                    <button class='button' @click='addToCart' v-if='inventory != 0'>Add to Cart</button>
+                    <button class='button' @click='takeAll' v-if='inventory != 0'>Take all</button>
+                    <p>Available: {{ inventory}}</p>
 
-
-                    <p v-if='inventory > 0 && cart < inventory' >In Stock</p>
+                    <p v-if='inventory > 0 && inventory != 0' >In Stock</p>
                     <!-- <p v-else-if='inventory <= 10 && inventory > 0'>In Stock</p> -->
                     <p style="color: red;" v-else>Out Stock</p>
                 </div>

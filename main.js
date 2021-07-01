@@ -29,12 +29,15 @@ const app = Vue.createApp({
     methods:{
         addToCart(){
             this.cart++
+            this.inventory--
         },
         updateImage(img){
             this.image = img
         },
         takeAll(){
             this.cart = this.inventory
+            this.inventory = 0
+
         }
     }
 })
