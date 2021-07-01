@@ -22,10 +22,20 @@
                 <div class="product-info">
                     <h3 v-if='onSale' style="color: red;">This product is on sale</h3>
                     <a v-bind:href="link"><h1>{{ product }}</h1></a>
+                    <h2>Description:</h2>
                     <p>{{ description}}</p>
+                    <h2>Details: </h2>
+                    <ul>
+                        <li v-for='d in details'>{{ d }}</li>
+                    </ul>
+                    <h2>Colors:</h2>
+                    <div v-for='variant in variants' :key='variant.id'>{{ variant.color}}</div>
+
+                    <h2>size:</h2>
+                    <label v-for='size in sizes' >{{ size }} <b>|</b> </label>
+                    
                     <p v-if='inventory > 10'>In Stock</p>
                     <p v-else-if='inventory <= 10 && inventory > 0'>In Stock</p>
-
                     <p v-else>Out Stock</p>
                 </div>
             </div>
