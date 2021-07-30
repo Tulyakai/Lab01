@@ -30,6 +30,9 @@ const app = Vue.createApp({
         addToCart(){
             this.cart++
             this.inventory--
+            if (incentory == 0) {
+                this.onSale = false
+            }
         },
         updateImage(img){
             this.image = img
@@ -37,7 +40,7 @@ const app = Vue.createApp({
         takeAll(){
             this.cart = this.inventory
             this.inventory = 0
-
+            this.onSale = false
         }
     }
 })
